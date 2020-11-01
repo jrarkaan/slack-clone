@@ -16,7 +16,8 @@ const Header = () => {
                 {/* avatar for logged in user*/}
                 <Avatar 
                     className="header__avatar"
-                    alt="Raka Janitra"
+                    alt={user?.displayName}
+                    src={user?.photoURL}
                 />
                 {/* Time Icon*/}
                 <AccessTimeIcon />

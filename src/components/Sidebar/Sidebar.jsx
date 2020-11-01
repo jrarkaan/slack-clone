@@ -18,8 +18,10 @@ import SideBarOption from './Option/SideBarOption';
 import { ExpandLess } from '@material-ui/icons';
 // importing api from firebase
 import db from '../../Api';
-
+import { useStateValue } from "../../Context/StateProvider"
+ 
 const Sidebar = () => {
+    const [{user}] = useStateValue();
     const [channels, setChannels] = useState([]);
         
     useEffect( ()=> {
@@ -40,7 +42,7 @@ const Sidebar = () => {
                     <h2>Clever Programmer</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Rafeh Qazi
+                        {user?.displayName}
                     </h3>
                 </div>
                 <CreateIcon />

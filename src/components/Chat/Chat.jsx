@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./Chat.css";
+import ChatInput from "./ChanInput/ChatInput";
 import Message from "./Message/Message";
 // import react params
 import { useParams } from "react-router-dom";
@@ -12,7 +13,7 @@ const Chat = () => {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
     const [roomMessages, setRoomMessages] = useState([]);
-
+    
     useEffect( ()=> {
         if(roomId){
             db.collection('rooms')
@@ -29,7 +30,7 @@ const Chat = () => {
                 ))
         }
     }, [roomId]);
-    console.log(roomMessages);
+    console.log(roomId)
     return (
         <div className="chat">
             <div className="chat__header">
@@ -54,7 +55,7 @@ const Chat = () => {
                         userImage={userImage}
                     />
                 ))}
-                {/* <Massage /> */}
+                <ChatInput channelName={roomDetails?.name} channelId={roomId} />
             </div>
         </div>
     )
