@@ -6,9 +6,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 // importing styles
 import './Header.css';
-
+import { useStateValue } from '../../Context/StateProvider';
 
 const Header = () => {
+    const [{ user }] = useStateValue();
     return (
         <div className="header">
             <div className="header__left">

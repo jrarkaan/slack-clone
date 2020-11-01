@@ -1,4 +1,4 @@
-import React, {Component, Fragment, useState, useEffect } from "react";
+import React, {Component, Fragment } from "react";
 import './App.css';
 import { Header, Sidebar, Chat, Login } from './components';
 import {
@@ -6,10 +6,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
+import { useStateValue } from "./Context/StateProvider";
 
 const App = ()=> {
-  const [user, setUser] = useState(null);
+  //const [user, setUser] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="App">
