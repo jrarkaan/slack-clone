@@ -1,5 +1,6 @@
+import React, {Component, Fragment, useState, useEffect } from "react";
 import './App.css';
-import { Header, Sidebar, Chat } from './components';
+import { Header, Sidebar, Chat, Login } from './components';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,25 +8,33 @@ import {
 } from "react-router-dom";
 
 
-function App() {
+const App = ()=> {
+  const [user, setUser] = useState(null);
+
   return (
     <div className="App">
       <Router>
         {/* Header*/}
-        <Header />
-        <div className="app__body">
-          {/* Sidebar */}
-          <Sidebar />
-          <Switch>
-            <Route path="/room/:roomId">
-              <Chat />
-            </Route>
-            <Route exact path="/">
-              <h1>Welcome</h1>
-            </Route>
-          </Switch>
-          {/* React-router -> chat screen */}
-        </div>
+        {!user ? (
+          <Login />
+        ) : (
+          <Fragment>
+            <Header />
+            <div className="app__body">
+            {/* Sidebar */}
+              <Sidebar />
+              <Switch>
+                <Route path="/room/:roomId">
+                  <Chat />
+                </Route>
+                <Route exact path="/">
+                  <h1>Welcome</h1>
+                </Route>
+              </Switch>
+              {/* React-router -> chat screen */}
+            </div>
+          </Fragment>
+        )}
       </Router>
   
     </div>
