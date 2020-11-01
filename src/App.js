@@ -1,15 +1,33 @@
 import './App.css';
-import { Header, Sidebar } from './components';
+import { Header, Sidebar, Chat } from './components';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+
 function App() {
   return (
     <div className="App">
-      {/* Header*/}
-      <Header />
-      <div className="app__body">
-        {/* Sidebar */}
-        <Sidebar />
-        {/* React-router -> chat screen */}
-      </div>
+      <Router>
+        {/* Header*/}
+        <Header />
+        <div className="app__body">
+          {/* Sidebar */}
+          <Sidebar />
+          <Switch>
+            <Route path="/room/:roomId">
+              <Chat />
+            </Route>
+            <Route exact path="/">
+              <h1>Welcome</h1>
+            </Route>
+          </Switch>
+          {/* React-router -> chat screen */}
+        </div>
+      </Router>
+  
     </div>
   );
 }
