@@ -1,8 +1,18 @@
 import React from 'react'
 import "./Login.css";
 import { Button } from "@material-ui/core"
+import { auth, provider } from "../../Api";
 
 const Login = () => {
+    const signIn = (e)=>{
+        auth.signInWithPopup(provider)
+            .then(result => {
+                console.log(result);
+            })
+            .catch((err)=>{
+                alert(err.message);
+            })
+    }
     return (
         <div className="login">
             <div className="login__container">
@@ -12,7 +22,7 @@ const Login = () => {
                 />
                 <h1>Sign In to Clever Programmer HQ</h1>
                 <p>Cleverprogrammer.slack.clone</p>
-                <Button>Sign In With Google</Button>
+                <Button onClick={signIn} >Sign In With Google</Button>
             </div>
         </div>
     )

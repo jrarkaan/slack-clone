@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 // importing material-ui
 import { InfoOutlined, StarBorderOutlined } from '@material-ui/icons';
 // importing db
-import db from "../api/firebase";
+import db from "../../Api";
 
 const Chat = () => {
     const { roomId } = useParams();

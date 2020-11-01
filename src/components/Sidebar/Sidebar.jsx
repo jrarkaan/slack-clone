@@ -17,7 +17,7 @@ import AddIcon from '@material-ui/icons/Add';
 import SideBarOption from './Option/SideBarOption';
 import { ExpandLess } from '@material-ui/icons';
 // importing api from firebase
-import db from '../api/firebase';
+import db from '../../Api';
 
 const Sidebar = () => {
     const [channels, setChannels] = useState([]);
